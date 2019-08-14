@@ -18,7 +18,6 @@ cron.schedule('*/5 * * * *', () => {
                 sendNotifcation(`Current stock status is ${stockStatus} : ${time}`)
             } else {
                 sendNotifcation(`Stock checked – Currently ${stockStatus} : ${time}`)
-                console.log(`Stock checked – Currently ${stockStatus} : ${time}`);
             }
 
         } else {
@@ -30,7 +29,6 @@ cron.schedule('*/5 * * * *', () => {
 function sendNotifcation(stockMsg) {
     console.log(stockMsg);
     sgMail.setApiKey(process.env.SENDGRID_APIKEY);
-    sgMail.setApiKey(envKey);
     const msg = {
         to: 'nolly00@gmail.com',
         from: {
