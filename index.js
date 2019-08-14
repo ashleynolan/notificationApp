@@ -29,7 +29,7 @@ cron.schedule('*/5 * * * *', () => {
 
 function sendNotifcation(stockMsg) {
     console.log(stockMsg);
-    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+    sgMail.setApiKey(process.env.SENDGRID_APIKEY);
     sgMail.setApiKey(envKey);
     const msg = {
         to: 'nolly00@gmail.com',
