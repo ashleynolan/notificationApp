@@ -17,7 +17,8 @@ cron.schedule('* * * * *', () => {
             if (stockStatus !== 'Out of Stock') {
                 sendNotifcation(`Current stock status is ${stockStatus} : ${time}`)
             } else {
-                sendNotifcation(`Stock checked – Currently ${stockStatus} : ${time}`)
+                // sendNotifcation(`Stock checked – Currently ${stockStatus} : ${time}`)
+                console.log(`Stock checked – Currently ${stockStatus} : ${time}`);
             }
 
         } else {
