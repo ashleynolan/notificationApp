@@ -7,7 +7,7 @@ const sgMail = require('@sendgrid/mail');
 
 const scrapeUrl = 'https://www.jtxfitness.com/used-rowing-machine';
 
-cron.schedule('*/5 * * * *', () => {
+cron.schedule('* * * * *', () => {
     request(scrapeUrl, (error, response, body) => {
         if (!error) {
             const $ = cheerio.load(body);
@@ -29,6 +29,7 @@ cron.schedule('*/5 * * * *', () => {
 function sendNotifcation(stockMsg) {
     console.log(stockMsg);
     sgMail.setApiKey(process.env.SENDGRID_APIKEY);
+
     const msg = {
         to: 'nolly00@gmail.com',
         from: {
@@ -41,5 +42,10 @@ function sendNotifcation(stockMsg) {
 <p>${scrapeUrl}</p>
         `,
     };
-    sgMail.send(msg);
+
+    sgMail.send(msg, (error, result) => {
+        if (error) {
+            console.log(`We’ve encountered an error: ${error}`);
+        }
+    });
 }

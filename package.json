@@ -7,7 +7,7 @@
     "author": "Ashley Watson-Nolan",
     "license": "MIT",
     "scripts": {
-        "start": "pm2 start index.js"
+        "start": "pm2-runtime start ecosystem.config.js --env production"
     },
     "dependencies": {
         "@sendgrid/mail": "^6.4.0",
