@@ -7,7 +7,7 @@ const sgMail = require('@sendgrid/mail');
 
 const scrapeUrl = 'https://www.jtxfitness.com/used-rowing-machine';
 
-cron.schedule('* * * * *', () => {
+cron.schedule('*/5 * * * *', () => {
     request(scrapeUrl, (error, response, body) => {
         if (!error) {
             const $ = cheerio.load(body);
