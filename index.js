@@ -12,9 +12,11 @@ cron.schedule('*/5 * * * *', () => {
         if (!error) {
             const $ = cheerio.load(body);
             const stockStatus = $('.buy-button button').html();
+            const condition = $('.required-entry.super-attribute-select option:nth-child(2)').html();
+            required - entry super- attribute - select
             const time = dayjs().format('HH:mm:ss DD-MM-YYYY ');
 
-            if (stockStatus !== 'Out of Stock') {
+            if (stockStatus !== 'Out of Stock' && condition !== 'Part-Assembled Return') {
                 sendNotifcation(`Current stock status is ${stockStatus} : ${time}`)
             } else {
                 // sendNotifcation(`Stock checked – Currently ${stockStatus} : ${time}`)
